@@ -18,14 +18,28 @@ public class Player : MonoBehaviour
     public float dashDuration = .25f;
     public float dashSpeed = 20;
 
+    [Header("Gravity Settings")]
+    public float normalGravityScale {  get; private set; }
+    public float maxFallGravityScale = 10f;
+    public float gravityLerpSpeed = 5f; // how fast it increases
+
     [Header("Jump")]
     public float jumpForce = 5;
     [Range(0f, 1f)]
     public float inAirMoveMultiplier = .7f;
-    public float normalGravityScale {  get; private set; }
+    [Range(0f, 1f)]
+    public float jumpCutMultiplier = .5f;
     [Header("Flip")]
     private bool facingRight = true;
     public int facingDir { get; private set; } = 1;
+
+    [Header("Coyote Jump")]
+    public float coyoteTime = 0.15f;
+    public float coyoteTimer { get; private set; }
+
+    [Header("Double Jump")]
+    public bool canDoubleJump;
+
 
     [Header("Collision Detection")]
     [SerializeField] private float groundCheckDistance;
@@ -134,8 +148,22 @@ public class Player : MonoBehaviour
     {
         groundDetected = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, whatIsGround);
         //wallDetected = Physics2D.Raycast(primaryWallCheck.position, Vector2.right * facingDir, wallCheckDistance, whatIsGround) &&
-                       //Physics2D.Raycast(secondaryWallCheck.position, Vector2.right * facingDir, wallCheckDistance, whatIsGround);
+        //Physics2D.Raycast(secondaryWallCheck.position, Vector2.right * facingDir, wallCheckDistance, whatIsGround);
+
+        if (groundDetected)
+        {
+            ResetCoyoteTimer();
+        }
+        else
+        {
+            UpdateCoyoteTimer();
+        }
     }
+
+    public void ResetCoyoteTimer() => coyoteTimer = coyoteTime;
+    public void UpdateCoyoteTimer() => coyoteTimer -= Time.deltaTime;
+
+    public void DisableCoyoteTime() => coyoteTimer = 0f;
 
     private void OnDrawGizmos()
     {

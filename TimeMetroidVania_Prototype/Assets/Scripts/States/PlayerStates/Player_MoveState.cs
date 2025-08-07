@@ -28,3 +28,4 @@ public class Player_MoveState : Player_GroundedState
         player.SetVelocity(player.moveInput.x * player.moveSpeed, rb.linearVelocity.y);
     }
 }
+        

@@ -9,6 +9,8 @@ public class Player_GroundedState : EntityState
     public override void Enter()
     {
         base.Enter();
+        rb.gravityScale = player.normalGravityScale;
+        player.canDoubleJump = true;
     }
 
     public override void Exit()
@@ -25,7 +27,7 @@ public class Player_GroundedState : EntityState
             stateMachine.ChangeState(player.fallState);
         }
 
-        if (player.input.Player.Jump.WasPerformedThisFrame())
+        if (player.input.Player.Jump.WasPerformedThisFrame() && player.coyoteTimer > 0f)
         {
             stateMachine.ChangeState(player.jumpState);
         }

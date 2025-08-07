@@ -20,6 +20,9 @@ public class Player_FallState : Player_AirState
     {
         base.Update();
 
+        float target = player.maxFallGravityScale;
+        rb.gravityScale = Mathf.Lerp(rb.gravityScale, target, player.gravityLerpSpeed * Time.deltaTime);
+
         if (player.groundDetected)
         {
             stateMachine.ChangeState(player.idleState);
