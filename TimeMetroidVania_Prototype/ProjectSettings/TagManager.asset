@@ -12,7 +12,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
+  - BlurBackground
   - 
   - 
   - 
@@ -41,14 +41,41 @@ TagManager:
   - name: BG
     uniqueID: 3165822443
     locked: 0
+  - name: BG_2
+    uniqueID: 13955425
+    locked: 0
+  - name: BG_3
+    uniqueID: 3597104775
+    locked: 0
+  - name: Props
+    uniqueID: 3626780393
+    locked: 0
+  - name: BG_4
+    uniqueID: 2683302301
+    locked: 0
+  - name: FX_BG
+    uniqueID: 2313998239
+    locked: 0
   - name: Ground
     uniqueID: 1719409661
+    locked: 0
+  - name: Shadow_FakeLight
+    uniqueID: 3288455951
     locked: 0
   - name: Player
     uniqueID: 1103382515
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: FX
+    uniqueID: 2632176695
+    locked: 0
+  - name: CameraSortingLayer
+    uniqueID: 1703109005
+    locked: 0
+  - name: Props_FG
+    uniqueID: 1651388451
     locked: 0
   m_RenderingLayers:
   - Default
